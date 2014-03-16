@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPI", "RPI\RPI.csproj", "{4DFB3250-8DA6-4396-96EE-A058A16C3927}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevengeOfTheHotDogs", "RevengeOfTheHotDogs\RevengeOfTheHotDogs.csproj", "{08C45D5F-189A-4413-9CC8-BB2967D8E274}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DFB3250-8DA6-4396-96EE-A058A16C3927}.Debug|x86.ActiveCfg = Debug|x86
+		{4DFB3250-8DA6-4396-96EE-A058A16C3927}.Debug|x86.Build.0 = Debug|x86
+		{4DFB3250-8DA6-4396-96EE-A058A16C3927}.Release|x86.ActiveCfg = Release|x86
+		{4DFB3250-8DA6-4396-96EE-A058A16C3927}.Release|x86.Build.0 = Release|x86
+		{08C45D5F-189A-4413-9CC8-BB2967D8E274}.Debug|x86.ActiveCfg = Debug|x86
+		{08C45D5F-189A-4413-9CC8-BB2967D8E274}.Debug|x86.Build.0 = Debug|x86
+		{08C45D5F-189A-4413-9CC8-BB2967D8E274}.Release|x86.ActiveCfg = Release|x86
+		{08C45D5F-189A-4413-9CC8-BB2967D8E274}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

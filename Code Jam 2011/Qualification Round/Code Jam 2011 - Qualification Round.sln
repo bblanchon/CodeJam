@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotTrust", "BotTrust\BotTrust.csproj", "{02E2EA84-A378-4C96-ABAF-0A4F47D78DE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magicka", "Magicka\Magicka.csproj", "{82FDE477-E627-4F61-92C8-A2023BAE582F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandySplitting", "CandySplitting\CandySplitting.csproj", "{F6DC0814-2459-4922-9F54-DC54E565D71D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02E2EA84-A378-4C96-ABAF-0A4F47D78DE5}.Debug|x86.ActiveCfg = Debug|x86
+		{02E2EA84-A378-4C96-ABAF-0A4F47D78DE5}.Debug|x86.Build.0 = Debug|x86
+		{02E2EA84-A378-4C96-ABAF-0A4F47D78DE5}.Release|x86.ActiveCfg = Release|x86
+		{02E2EA84-A378-4C96-ABAF-0A4F47D78DE5}.Release|x86.Build.0 = Release|x86
+		{82FDE477-E627-4F61-92C8-A2023BAE582F}.Debug|x86.ActiveCfg = Debug|x86
+		{82FDE477-E627-4F61-92C8-A2023BAE582F}.Debug|x86.Build.0 = Debug|x86
+		{82FDE477-E627-4F61-92C8-A2023BAE582F}.Release|x86.ActiveCfg = Release|x86
+		{82FDE477-E627-4F61-92C8-A2023BAE582F}.Release|x86.Build.0 = Release|x86
+		{F6DC0814-2459-4922-9F54-DC54E565D71D}.Debug|x86.ActiveCfg = Debug|x86
+		{F6DC0814-2459-4922-9F54-DC54E565D71D}.Debug|x86.Build.0 = Debug|x86
+		{F6DC0814-2459-4922-9F54-DC54E565D71D}.Release|x86.ActiveCfg = Release|x86
+		{F6DC0814-2459-4922-9F54-DC54E565D71D}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

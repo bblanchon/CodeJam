@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consonants", "Consonants\Consonants.csproj", "{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pogo", "Pogo\Pogo.csproj", "{CDDEADE5-4EC7-49C7-B866-AA7CAA99FEFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Debug|x86.ActiveCfg = Debug|x86
+		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Debug|x86.Build.0 = Debug|x86
+		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Release|x86.ActiveCfg = Release|x86
+		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Release|x86.Build.0 = Release|x86
+		{CDDEADE5-4EC7-49C7-B866-AA7CAA99FEFF}.Debug|x86.ActiveCfg = Debug|x86
+		{CDDEADE5-4EC7-49C7-B866-AA7CAA99FEFF}.Debug|x86.Build.0 = Debug|x86
+		{CDDEADE5-4EC7-49C7-B866-AA7CAA99FEFF}.Release|x86.ActiveCfg = Release|x86
+		{CDDEADE5-4EC7-49C7-B866-AA7CAA99FEFF}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondInheritance", "DiamondInheritance\DiamondInheritance.csproj", "{7C1B2FCB-B4A3-4C99-BC6F-EFA4D0C62708}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutOfGas", "OutOfGas\OutOfGas.csproj", "{BBE8A09C-CD9F-45EF-B241-6983FB8C7B36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C1B2FCB-B4A3-4C99-BC6F-EFA4D0C62708}.Debug|x86.ActiveCfg = Debug|x86
+		{7C1B2FCB-B4A3-4C99-BC6F-EFA4D0C62708}.Debug|x86.Build.0 = Debug|x86
+		{7C1B2FCB-B4A3-4C99-BC6F-EFA4D0C62708}.Release|x86.ActiveCfg = Release|x86
+		{7C1B2FCB-B4A3-4C99-BC6F-EFA4D0C62708}.Release|x86.Build.0 = Release|x86
+		{BBE8A09C-CD9F-45EF-B241-6983FB8C7B36}.Debug|x86.ActiveCfg = Debug|x86
+		{BBE8A09C-CD9F-45EF-B241-6983FB8C7B36}.Debug|x86.Build.0 = Debug|x86
+		{BBE8A09C-CD9F-45EF-B241-6983FB8C7B36}.Release|x86.ActiveCfg = Release|x86
+		{BBE8A09C-CD9F-45EF-B241-6983FB8C7B36}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

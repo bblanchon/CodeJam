@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordProblem", "PasswordProblem\PasswordProblem.csproj", "{6757B276-A932-4123-9628-0CA1B875413E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingdomRush", "KingdomRush\KingdomRush.csproj", "{104D2AC8-F34A-4933-876E-F2AC0B3DF4EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CruiseControl", "CruiseControl\CruiseControl.csproj", "{A6E1138B-4B53-4B8D-854E-B46098E106F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6757B276-A932-4123-9628-0CA1B875413E}.Debug|x86.ActiveCfg = Debug|x86
+		{6757B276-A932-4123-9628-0CA1B875413E}.Debug|x86.Build.0 = Debug|x86
+		{6757B276-A932-4123-9628-0CA1B875413E}.Release|x86.ActiveCfg = Release|x86
+		{6757B276-A932-4123-9628-0CA1B875413E}.Release|x86.Build.0 = Release|x86
+		{104D2AC8-F34A-4933-876E-F2AC0B3DF4EC}.Debug|x86.ActiveCfg = Debug|x86
+		{104D2AC8-F34A-4933-876E-F2AC0B3DF4EC}.Debug|x86.Build.0 = Debug|x86
+		{104D2AC8-F34A-4933-876E-F2AC0B3DF4EC}.Release|x86.ActiveCfg = Release|x86
+		{104D2AC8-F34A-4933-876E-F2AC0B3DF4EC}.Release|x86.Build.0 = Release|x86
+		{A6E1138B-4B53-4B8D-854E-B46098E106F1}.Debug|x86.ActiveCfg = Debug|x86
+		{A6E1138B-4B53-4B8D-854E-B46098E106F1}.Debug|x86.Build.0 = Debug|x86
+		{A6E1138B-4B53-4B8D-854E-B46098E106F1}.Release|x86.ActiveCfg = Release|x86
+		{A6E1138B-4B53-4B8D-854E-B46098E106F1}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeakingInTongues", "SpeakingInTongues\SpeakingInTongues.csproj", "{2587E790-4CF2-4636-AE13-2127AD59AE70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DancingWithTheGooglers", "DancingWithTheGooglers\DancingWithTheGooglers.csproj", "{A1495D09-0228-4AE8-94C1-BE424894E28F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycledNumbers", "RecycledNumbers\RecycledNumbers.csproj", "{76D38DD0-A391-4FEA-9F9E-798EF73EC68B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HallOfMirrors", "HallOfMirrors\HallOfMirrors.csproj", "{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2587E790-4CF2-4636-AE13-2127AD59AE70}.Debug|x86.ActiveCfg = Debug|x86
+		{2587E790-4CF2-4636-AE13-2127AD59AE70}.Debug|x86.Build.0 = Debug|x86
+		{2587E790-4CF2-4636-AE13-2127AD59AE70}.Release|x86.ActiveCfg = Release|x86
+		{2587E790-4CF2-4636-AE13-2127AD59AE70}.Release|x86.Build.0 = Release|x86
+		{A1495D09-0228-4AE8-94C1-BE424894E28F}.Debug|x86.ActiveCfg = Debug|x86
+		{A1495D09-0228-4AE8-94C1-BE424894E28F}.Debug|x86.Build.0 = Debug|x86
+		{A1495D09-0228-4AE8-94C1-BE424894E28F}.Release|x86.ActiveCfg = Release|x86
+		{A1495D09-0228-4AE8-94C1-BE424894E28F}.Release|x86.Build.0 = Release|x86
+		{76D38DD0-A391-4FEA-9F9E-798EF73EC68B}.Debug|x86.ActiveCfg = Debug|x86
+		{76D38DD0-A391-4FEA-9F9E-798EF73EC68B}.Debug|x86.Build.0 = Debug|x86
+		{76D38DD0-A391-4FEA-9F9E-798EF73EC68B}.Release|x86.ActiveCfg = Release|x86
+		{76D38DD0-A391-4FEA-9F9E-798EF73EC68B}.Release|x86.Build.0 = Release|x86
+		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Debug|x86.ActiveCfg = Debug|x86
+		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Debug|x86.Build.0 = Debug|x86
+		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Release|x86.ActiveCfg = Release|x86
+		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
