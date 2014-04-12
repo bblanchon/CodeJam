@@ -16,15 +16,11 @@ namespace MinesweeperMaster
         readonly Cell[,] cells;
         readonly int rows;
         readonly int cols;
-        readonly int perimeter;
-        int mineCount;
 
         public Map(int rows, int cols)
         {
             this.rows = rows;
             this.cols = cols;
-
-            perimeter = rows*2 + cols*2 - 4;
 
             cells = new Cell[rows, cols];
 
@@ -79,7 +75,7 @@ namespace MinesweeperMaster
                     if (cell.IsMine) continue;
                     if (cell.AdjacentMines == 0) continue;
 
-                    if (!IsTouchingAZero(row, col)) 
+                    if (!IsTouchingAZero(row, col))
                         return false;
                 }
             }
@@ -95,55 +91,59 @@ namespace MinesweeperMaster
                     .Any(x => x.AdjacentMines == 0);
         }
 
-        public void AddMineAtFavorablePlace()
+        public void AddMines(int mineCount)
         {
-            if (mineCount < perimeter)
-                AddMineInPerimeter();
-            else
-                AddMineAtHottestCell();
+            AddMinesInBox(mineCount, 0, rows, 0, cols);
+
+            Debug.Assert(cells.Cast<Cell>().Count(x=>x.IsMine) == mineCount);
         }
 
-        void AddMineInPerimeter()
+        void AddMinesInBox(int mineCount, int boxRow, int boxRows, int boxCol, int boxCols)
         {
-            var indexInTopBorder = mineCount;
-            var indexInRightBorder = indexInTopBorder - cols + 1;
-            var indexInBottomBorder = indexInRightBorder - rows + 1;
-            var indexInLeftBorder = indexInBottomBorder - cols + 1;
-            
-            if (indexInTopBorder < cols)
-                SetAsMine(0, indexInTopBorder);
-            else if (indexInRightBorder < rows)
-                SetAsMine(indexInRightBorder, cols-1);
-            else if (indexInBottomBorder < cols)
-                SetAsMine(rows-1, cols-1-indexInBottomBorder);
-            else if (indexInLeftBorder < rows)
-                SetAsMine(rows-1-indexInLeftBorder, 0);
-            else
-                Debug.Fail("Bug in AddMineInPerimeter()");
-        }
+            Debug.Assert(mineCount >= 0);
+            Debug.Assert(mineCount < boxRows * boxCols);
 
-        void AddMineAtHottestCell()
-        {
-            var hottestCellRow = 0;
-            var hottestCellCol = 0;
-            var hottestCellValue = 0;
+            if (mineCount == 0) return;
 
-            for (var row = 0; row < rows; row++)
+            var smallHalf = mineCount / 2;
+            var bigHalf = mineCount - mineCount / 2;
+
+            if (boxRows < boxCols)
             {
-                for (var col = 0; col < cols; col++)
+                if (mineCount >= boxRows)
                 {
-                    var cell = cells[row, col];
-                    
-                    if (cell.IsMine) continue;
-                    if (cell.AdjacentMines <= hottestCellValue) continue;
+                    for (var i = 0; i < boxRows; i++)
+                        SetAsMine(boxRow + i, boxCol);
 
-                    hottestCellRow = row;
-                    hottestCellCol = col;
-                    hottestCellValue = cell.AdjacentMines;
+                    AddMinesInBox(mineCount - boxRows, boxRow, boxRows, boxCol + 1, boxCols - 1);
+                }
+                else
+                {
+                    for (var i=0; i < bigHalf; i++)
+                        SetAsMine(boxRow, boxCol + i);
+
+                    for (var i = 0; i < smallHalf; i++)
+                        SetAsMine(boxRow + boxRows - 1, boxCol + boxCols - 1 - i);
                 }
             }
+            else
+            {
+                if (mineCount >= boxCols)
+                {
+                    for (var i = 0; i < boxCols; i++)
+                        SetAsMine(boxRow, boxCol + i);
 
-            SetAsMine(hottestCellRow, hottestCellCol);
+                    AddMinesInBox(mineCount - boxCols, boxRow + 1, boxRows - 1, boxCol, boxCols);
+                }
+                else
+                {
+                    for (var i = 0; i < bigHalf; i++)
+                        SetAsMine(boxRow + i, boxCol);
+
+                    for (var i = 0; i < smallHalf; i++)
+                        SetAsMine(boxRow + boxRows - 1 - i, boxCol + boxCols - 1);
+                }
+            }
         }
 
         public void SetAsMine(int row, int col)
@@ -157,8 +157,6 @@ namespace MinesweeperMaster
 
             foreach (var neighbor in GetNeighbors(row, col))
                 neighbor.AdjacentMines++;
-
-            mineCount++;
         }
 
         IEnumerable<Cell> GetNeighbors(int row, int col)
@@ -171,8 +169,8 @@ namespace MinesweeperMaster
             var rowIncs = GetNeightborOnOneAxis(row, rows);
             var colIncs = GetNeightborOnOneAxis(col, cols).ToArray();
 
-            return 
-                from neighborRow in rowIncs 
+            return
+                from neighborRow in rowIncs
                 from neighborCol in colIncs
                 where neighborRow != row || neighborCol != col
                 select cells[neighborRow, neighborCol];

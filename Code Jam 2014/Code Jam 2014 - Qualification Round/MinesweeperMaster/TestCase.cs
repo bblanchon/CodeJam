@@ -14,13 +14,10 @@ namespace MinesweeperMaster
         public object Solve()
         {
             var map = new Map(R, C);
-            for (var i = 0; i < M; i++)
-            {
-                map.AddMineAtFavorablePlace();
-            }
+            map.AddMines(M);
 
-            /*if (!map.CanWinInOnClick())
-                return "Impossible";*/
+            if (!map.CanWinInOnClick())
+                return "Impossible";
 
             return Environment.NewLine + map.Render();
         }

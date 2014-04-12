@@ -1,5 +1,6 @@
 ﻿// Copyright © Benoit Blanchon 2014
 // All Rights Reserved
+//#define TEST_MAP_FILL
 
 using System;
 using System.Diagnostics;
@@ -7,12 +8,25 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 
+
 namespace MinesweeperMaster
 {
     class Program
     {
         static void Main(string[] args)
         {
+#if TEST_MAP_FILL
+            for (int i = 0; i < 100; i++)
+            {
+                var map = new Map(10, 10);
+                map.AddMines(i);
+                Console.WriteLine();
+                Console.WriteLine(map.Render());
+            }
+
+            return;
+#endif
+
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
             foreach (var inputFileName in Directory.EnumerateFiles(".", "*.in"))
