@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicTrick", "MagicTrick\MagicTrick.csproj", "{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieClickerAlpha", "CookieClickerAlpha\CookieClickerAlpha.csproj", "{6B618C81-E64B-4757-9218-F69CD173AE28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,6 +17,10 @@ Global
 		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Debug|x86.Build.0 = Debug|x86
 		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Release|x86.ActiveCfg = Release|x86
 		{42DE7B9A-4B17-4150-9CFE-47AEDEE07A20}.Release|x86.Build.0 = Release|x86
+		{6B618C81-E64B-4757-9218-F69CD173AE28}.Debug|x86.ActiveCfg = Debug|x86
+		{6B618C81-E64B-4757-9218-F69CD173AE28}.Debug|x86.Build.0 = Debug|x86
+		{6B618C81-E64B-4757-9218-F69CD173AE28}.Release|x86.ActiveCfg = Release|x86
+		{6B618C81-E64B-4757-9218-F69CD173AE28}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
