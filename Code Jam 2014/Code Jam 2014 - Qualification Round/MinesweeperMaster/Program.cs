@@ -19,7 +19,7 @@ namespace MinesweeperMaster
             for (int i = 0; i < 100; i++)
             {
                 var map = new Map(10, 10);
-                map.AddMines(i);
+                map.PlaceMines(i);
                 Console.WriteLine();
                 Console.WriteLine(map.Render());
             }

@@ -9,6 +9,7 @@ namespace MinesweeperMaster
     {
         public bool IsMine { get; set; }
         public int AdjacentMines { get; set; }
+        public bool IsVisible { get; set; }
     }
 
     class Map
@@ -16,6 +17,8 @@ namespace MinesweeperMaster
         readonly Cell[,] cells;
         readonly int rows;
         readonly int cols;
+        int visibleCount;
+        int mineCount;
 
         public Map(int rows, int cols)
         {
@@ -64,7 +67,66 @@ namespace MinesweeperMaster
             return sb.ToString();
         }
 
-        public bool CanWinInOnClick()
+        public bool IsWon
+        {
+            get { return mineCount + visibleCount == cells.Length; }
+        }
+
+        public void Click()
+        {
+            var bestCellCol = 0;
+            var bestCellRow = 0;
+            var bestCellValue = 10;
+
+            for (var row = 0; row < rows; row++)
+            {
+                for (var col = 0; col < cols; col++)
+                {
+                    var cell = cells[row, col];
+
+                    if (cell.IsMine) continue;
+
+                    if (cell.AdjacentMines >= bestCellValue) continue;
+
+                    bestCellRow = row;
+                    bestCellCol = col;
+                    bestCellValue = cell.AdjacentMines;
+                }
+            }
+
+            ShowCell(bestCellRow, bestCellCol);
+        }
+
+        void ShowCell(int row, int col)
+        {
+            var cell = cells[row, col];
+
+            if (cell.IsVisible)return;
+            
+            cell.IsVisible = true;
+            visibleCount++;
+
+            if (cell.AdjacentMines == 0)
+            {
+                ShowNeighbors(row, col);
+            }
+        }
+
+        void ShowNeighbors(int row, int col)
+        {
+            var neighborRows = GetNeightborOnOneAxis(row, rows);
+            var neighborCols = GetNeightborOnOneAxis(col, cols).ToArray();
+
+            foreach (var neighborRow in neighborRows)
+            {
+                foreach (var neighborCol in neighborCols)
+                {
+                    ShowCell(neighborRow, neighborCol);
+                }
+            }
+        }
+
+        public bool CanWinInOneClick()
         {
             for (var row = 0; row < rows; row++)
             {
@@ -73,6 +135,7 @@ namespace MinesweeperMaster
                     var cell = cells[row, col];
 
                     if (cell.IsMine) continue;
+
                     if (cell.AdjacentMines == 0) continue;
 
                     if (!IsTouchingAZero(row, col))
@@ -91,11 +154,11 @@ namespace MinesweeperMaster
                     .Any(x => x.AdjacentMines == 0);
         }
 
-        public void AddMines(int mineCount)
+        public void PlaceMines(int mineCount)
         {
             AddMinesInBox(mineCount, 0, rows, 0, cols);
-
-            Debug.Assert(cells.Cast<Cell>().Count(x=>x.IsMine) == mineCount);
+            
+            Debug.Assert(this.mineCount == mineCount);
         }
 
         void AddMinesInBox(int mineCount, int boxRow, int boxRows, int boxCol, int boxCols)
@@ -154,6 +217,7 @@ namespace MinesweeperMaster
             Debug.Assert(col < cols);
 
             cells[row, col].IsMine = true;
+            mineCount++;
 
             foreach (var neighbor in GetNeighbors(row, col))
                 neighbor.AdjacentMines++;
@@ -166,12 +230,12 @@ namespace MinesweeperMaster
             Debug.Assert(col >= 0);
             Debug.Assert(col < cols);
 
-            var rowIncs = GetNeightborOnOneAxis(row, rows);
-            var colIncs = GetNeightborOnOneAxis(col, cols).ToArray();
+            var neighborRows = GetNeightborOnOneAxis(row, rows);
+            var neighborCols = GetNeightborOnOneAxis(col, cols).ToArray();
 
             return
-                from neighborRow in rowIncs
-                from neighborCol in colIncs
+                from neighborRow in neighborRows
+                from neighborCol in neighborCols
                 where neighborRow != row || neighborCol != col
                 select cells[neighborRow, neighborCol];
         }
