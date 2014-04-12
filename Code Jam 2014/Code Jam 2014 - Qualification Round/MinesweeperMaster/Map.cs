@@ -10,6 +10,7 @@ namespace MinesweeperMaster
         public bool IsMine { get; set; }
         public int AdjacentMines { get; set; }
         public bool IsVisible { get; set; }
+        public bool IsClicked { get; set; }
     }
 
     class Map
@@ -39,7 +40,6 @@ namespace MinesweeperMaster
         public string Render()
         {
             var sb = new StringBuilder();
-            var mustClickZero = true;
 
             for (var row = 0; row < rows; row++)
             {
@@ -50,18 +50,11 @@ namespace MinesweeperMaster
                     var cell = cells[row, col];
 
                     if (cell.IsMine)
-                    {
                         sb.Append('*');
-                    }
-                    else if (cell.AdjacentMines == 0 && mustClickZero)
-                    {
+                    else if (cell.IsClicked)
                         sb.Append('c');
-                        mustClickZero = false;
-                    }
                     else
-                    {
                         sb.Append('.');
-                    }
                 }
             }
 
@@ -95,6 +88,7 @@ namespace MinesweeperMaster
                 }
             }
 
+            cells[bestCellRow, bestCellCol].IsClicked = true;
             ShowCell(bestCellRow, bestCellCol);
         }
 
