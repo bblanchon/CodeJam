@@ -17,7 +17,7 @@ namespace MinesweeperMaster
             map.PlaceMines(M);
             map.Click();
 
-            return map.IsWon ? Environment.NewLine + map.Render() : "Impossible";
+            return map.IsWon ? map.Render() : "Impossible";
         }
     }
 }

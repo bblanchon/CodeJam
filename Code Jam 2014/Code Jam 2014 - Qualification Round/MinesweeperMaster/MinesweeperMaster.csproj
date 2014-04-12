@@ -55,6 +55,9 @@
     <Compile Include="InputFile.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="C-small-attempt0.in">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Sample.in">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

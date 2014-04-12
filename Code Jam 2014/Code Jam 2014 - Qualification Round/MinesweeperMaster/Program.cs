@@ -20,8 +20,8 @@ namespace MinesweeperMaster
             {
                 var map = new Map(10, 10);
                 map.PlaceMines(i);
-                Console.WriteLine();
                 Console.WriteLine(map.Render());
+                Console.WriteLine();
             }
 
             return;

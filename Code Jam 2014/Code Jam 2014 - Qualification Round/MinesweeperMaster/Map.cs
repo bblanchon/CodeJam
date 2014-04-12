@@ -43,6 +43,8 @@ namespace MinesweeperMaster
 
             for (var row = 0; row < rows; row++)
             {
+                sb.AppendLine();
+
                 for (var col = 0; col < cols; col++)
                 {
                     var cell = cells[row, col];
@@ -61,7 +63,6 @@ namespace MinesweeperMaster
                         sb.Append('.');
                     }
                 }
-                sb.AppendLine();
             }
 
             return sb.ToString();
@@ -99,9 +100,14 @@ namespace MinesweeperMaster
 
         void ShowCell(int row, int col)
         {
+            Debug.Assert(row >= 0);
+            Debug.Assert(row < rows);
+            Debug.Assert(col >= 0);
+            Debug.Assert(col < cols);
+
             var cell = cells[row, col];
 
-            if (cell.IsVisible)return;
+            if (cell.IsVisible) return;
             
             cell.IsVisible = true;
             visibleCount++;
@@ -114,6 +120,13 @@ namespace MinesweeperMaster
 
         void ShowNeighbors(int row, int col)
         {
+            Debug.Assert(row >= 0);
+            Debug.Assert(row < rows);
+            Debug.Assert(col >= 0);
+            Debug.Assert(col < cols);
+            Debug.Assert(cells[row, col].IsVisible);
+            Debug.Assert(cells[row, col].IsMine == false);
+
             var neighborRows = GetNeightborOnOneAxis(row, rows);
             var neighborCols = GetNeightborOnOneAxis(col, cols).ToArray();
 
@@ -126,59 +139,37 @@ namespace MinesweeperMaster
             }
         }
 
-        public bool CanWinInOneClick()
+        public void PlaceMines(int mines)
         {
-            for (var row = 0; row < rows; row++)
-            {
-                for (var col = 0; col < cols; col++)
-                {
-                    var cell = cells[row, col];
+            Debug.Assert(mines >= 0);
 
-                    if (cell.IsMine) continue;
-
-                    if (cell.AdjacentMines == 0) continue;
-
-                    if (!IsTouchingAZero(row, col))
-                        return false;
-                }
-            }
-
-            return true;
-        }
-
-        bool IsTouchingAZero(int row, int col)
-        {
-            return
-                GetNeighbors(row, col)
-                    .Where(x => !x.IsMine)
-                    .Any(x => x.AdjacentMines == 0);
-        }
-
-        public void PlaceMines(int mineCount)
-        {
-            AddMinesInBox(mineCount, 0, rows, 0, cols);
+            PlaceMinesInBox(mines, 0, rows, 0, cols);
             
-            Debug.Assert(this.mineCount == mineCount);
+            Debug.Assert(mineCount == mines);
         }
 
-        void AddMinesInBox(int mineCount, int boxRow, int boxRows, int boxCol, int boxCols)
+        void PlaceMinesInBox(int mines, int boxRow, int boxRows, int boxCol, int boxCols)
         {
-            Debug.Assert(mineCount >= 0);
-            Debug.Assert(mineCount < boxRows * boxCols);
+            Debug.Assert(mines >= 0);
+            Debug.Assert(mines < boxRows * boxCols);
+            Debug.Assert(boxRow >= 0);
+            Debug.Assert(boxRow + boxRows <= rows);
+            Debug.Assert(boxCol >= 0);
+            Debug.Assert(boxCol + boxCols <= cols);
 
-            if (mineCount == 0) return;
+            if (mines == 0) return;
 
-            var smallHalf = mineCount / 2;
-            var bigHalf = mineCount - mineCount / 2;
+            var smallHalf = mines / 2;
+            var bigHalf = mines - mines / 2;
 
             if (boxRows < boxCols)
             {
-                if (mineCount >= boxRows)
+                if (mines >= boxRows)
                 {
                     for (var i = 0; i < boxRows; i++)
                         SetAsMine(boxRow + i, boxCol);
 
-                    AddMinesInBox(mineCount - boxRows, boxRow, boxRows, boxCol + 1, boxCols - 1);
+                    PlaceMinesInBox(mines - boxRows, boxRow, boxRows, boxCol + 1, boxCols - 1);
                 }
                 else
                 {
@@ -191,12 +182,12 @@ namespace MinesweeperMaster
             }
             else
             {
-                if (mineCount >= boxCols)
+                if (mines >= boxCols)
                 {
                     for (var i = 0; i < boxCols; i++)
                         SetAsMine(boxRow, boxCol + i);
 
-                    AddMinesInBox(mineCount - boxCols, boxRow + 1, boxRows - 1, boxCol, boxCols);
+                    PlaceMinesInBox(mines - boxCols, boxRow + 1, boxRows - 1, boxCol, boxCols);
                 }
                 else
                 {
@@ -215,6 +206,7 @@ namespace MinesweeperMaster
             Debug.Assert(row < rows);
             Debug.Assert(col >= 0);
             Debug.Assert(col < cols);
+            Debug.Assert(cells[row, col].IsMine == false);
 
             cells[row, col].IsMine = true;
             mineCount++;
