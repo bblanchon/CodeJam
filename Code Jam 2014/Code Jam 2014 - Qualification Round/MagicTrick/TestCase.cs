@@ -16,10 +16,10 @@ namespace MagicTrick
             var candidates = FirstSelectedRow.Intersect(SecondSelectedRow).ToArray();
 
             if (candidates.Length == 0)
-                return "Bad magician!";
-
-            if (candidates.Length > 1)
                 return "Volunteer cheated!";
+                
+            if (candidates.Length > 1)
+                return "Bad magician!";
 
             return candidates[0];
         }
