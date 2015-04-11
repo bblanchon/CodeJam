@@ -17,17 +17,22 @@ namespace InfiniteHouseOfPancakes
             return GetMinutesFor(Dinners, int.MaxValue);
         }
 
-        private int GetMinutesFor(IEnumerable<int> dinners, int minutesAllowed)
+        private static int GetMinutesFor(IEnumerable<int> dinners, int minutesAllowed)
         {
-            if (minutesAllowed < 1) return int.MaxValue;
+            //if (minutesAllowed < 1) return int.MaxValue;
 
-            var minutesWithoutSplit = dinners.Max();
+            var biggestStack = dinners.Max();
+            if (biggestStack <= 1) return biggestStack;
 
-            if (minutesWithoutSplit <= 2) return minutesWithoutSplit;
-            
-            var minutesWithSplit = GetMinutesFor(SplitBiggestDinner(dinners), minutesWithoutSplit - 1) + 1;
+            var minutesWithSplit = GetMinutesFor(SplitBiggestDinner(dinners), biggestStack - 1) + 1;
 
-            return Math.Min(minutesWithoutSplit, minutesWithSplit);
+            var minutesWithWait = GetMinutesFor(WaitOneMinute(dinners), biggestStack - 1) + 1;
+
+            var fastest = Math.Min(minutesWithWait, minutesWithSplit);
+
+            Debug.Assert(fastest <= biggestStack);
+
+            return fastest;
         }
 
         private static IEnumerable<int> SplitBiggestDinner(IEnumerable<int> dinners)
@@ -35,13 +40,18 @@ namespace InfiniteHouseOfPancakes
             var sortedDinners = new List<int>(dinners);
             sortedDinners.Sort();
 
-            var biggest = sortedDinners[sortedDinners.Count - 1];
-            Debug.Assert(biggest>1);
+            var biggestStack = sortedDinners[sortedDinners.Count - 1];
+            Debug.Assert(biggestStack>1);
 
-            sortedDinners[sortedDinners.Count - 1] -= biggest / 2;
-            sortedDinners.Add(biggest / 2);
+            sortedDinners[sortedDinners.Count - 1] -= biggestStack / 2;
+            sortedDinners.Add(biggestStack / 2);
 
             return sortedDinners;
+        }
+
+        private static IEnumerable<int> WaitOneMinute(IEnumerable<int> dinners)
+        {
+            return dinners.Select(x => x - 1).Where(x => x > 0);
         }
     }
 }

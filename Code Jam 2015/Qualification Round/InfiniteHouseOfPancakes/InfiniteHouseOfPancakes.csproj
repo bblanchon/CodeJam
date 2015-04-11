@@ -57,6 +57,9 @@
     <None Include="B-small-attempt0.in">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="B-small-attempt1.in">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Sample.in">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
