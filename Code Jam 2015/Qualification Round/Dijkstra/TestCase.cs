@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Dijkstra
 {
@@ -26,35 +27,55 @@ namespace Dijkstra
 
         public object Solve()
         {
-            foreach (var firstCut in EnumerateCutPosition(Quaternion.I, 0))
+            var secondCuts = EnumerateCutPositionForK().ToArray();
+
+            foreach (var firstCut in EnumerateCutPositionForI())
             {
-                foreach (var secondCut in EnumerateCutPosition(Quaternion.J, firstCut))
+                foreach (var secondCut in secondCuts)
                 {
-                    foreach (var end in EnumerateCutPosition(Quaternion.K, secondCut))
-                    {
-                        if (end == TotalLength)
-                            return "YES";
-                    }
+                    if (MultiplayRange(firstCut, secondCut) == Quaternion.J)
+                        return "YES";
                 }  
             }
 
             return "NO";
         }
 
-        private IEnumerable<int> EnumerateCutPosition(Quaternion expected, int startIndex)
+        private IEnumerable<long> EnumerateCutPositionForI()
+        {
+            return EnumerateCutPosition(Quaternion.I, 0, +1);
+        }
+
+        private IEnumerable<long> EnumerateCutPositionForK()
+        {
+            return EnumerateCutPosition(Quaternion.K, TotalLength-1, -1);
+        }
+
+        private IEnumerable<long> EnumerateCutPosition(Quaternion expected, long startIndex, int increment)
         {
             var index = startIndex;
             var result = Quaternion.One;
 
-            while (index<TotalLength)
+            while (index<TotalLength && index >= 0)
             {
                 result = Multiply(result, GetQuaternionAt(index));
+                index += increment;
 
                 if (result == expected)
-                    yield return index + 1;
-
-                index++;
+                    yield return index;
             }
+        }
+
+        private Quaternion MultiplayRange(long startIndex, long stopIndex)
+        {
+            var result = Quaternion.One;
+
+            for (var i = startIndex; i < stopIndex; i++)
+            {
+                result = Multiply(result, GetQuaternionAt(i));
+            }
+
+            return result;
         }
 
         private long TotalLength
