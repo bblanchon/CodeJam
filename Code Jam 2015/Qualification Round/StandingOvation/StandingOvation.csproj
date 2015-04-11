@@ -55,6 +55,12 @@
     <Compile Include="ToolBox.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="A-large.in">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="A-small-attempt0.in">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Sample.in">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
