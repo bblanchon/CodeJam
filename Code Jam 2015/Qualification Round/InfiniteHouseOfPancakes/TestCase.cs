@@ -14,19 +14,17 @@ namespace InfiniteHouseOfPancakes
 
         public object Solve()
         {
-            return GetMinutesFor(Dinners, int.MaxValue);
+            return GetMinutesFor(Dinners);
         }
 
-        private static int GetMinutesFor(IEnumerable<int> dinners, int minutesAllowed)
+        private static int GetMinutesFor(IEnumerable<int> dinners)
         {
-            //if (minutesAllowed < 1) return int.MaxValue;
-
             var biggestStack = dinners.Max();
-            if (biggestStack <= 1) return biggestStack;
+            if (biggestStack <= 2) return biggestStack;
 
-            var minutesWithSplit = GetMinutesFor(SplitBiggestDinner(dinners), biggestStack - 1) + 1;
+            var minutesWithSplit = GetMinutesFor(SplitBiggestDinner(dinners)) + 1;
 
-            var minutesWithWait = GetMinutesFor(WaitOneMinute(dinners), biggestStack - 1) + 1;
+            var minutesWithWait = GetMinutesFor(WaitOneMinute(dinners)) + 1;
 
             var fastest = Math.Min(minutesWithWait, minutesWithSplit);
 
@@ -45,6 +43,8 @@ namespace InfiniteHouseOfPancakes
 
             sortedDinners[sortedDinners.Count - 1] -= biggestStack / 2;
             sortedDinners.Add(biggestStack / 2);
+
+            Debug.Assert(dinners.Sum() == sortedDinners.Sum());
 
             return sortedDinners;
         }
