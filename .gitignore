@@ -3,5 +3,6 @@ obj
 *.zip
 *.user
 *.suo
+*.exe
 /Cheat Sheet.pdf
 /Cheat Sheet.png
